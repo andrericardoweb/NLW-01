@@ -1,3 +1,4 @@
+//Populate field state
 function populateUFs() {
   const ufSelect = document.querySelector("select[name=uf]");
 
@@ -10,11 +11,11 @@ function populateUFs() {
     })
 }
 populateUFs()
-
+//Populate field city
 function getCities(event) {
   const citySelect = document.querySelector("select[name=city]")
   const stateInput = document.querySelector("input[name=state]")
-  
+
   const ufValue = event.target.value
 
   const indexOfSelectedState = event.target.selectedIndex
@@ -28,7 +29,7 @@ function getCities(event) {
   fetch(urlCities)
     .then(res => res.json())
     .then(cities => {
-      
+
       for (const city of cities) {
         citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
       }
@@ -40,3 +41,49 @@ function getCities(event) {
 document
   .querySelector("select[name=uf]")
   .addEventListener("change", getCities)
+
+  //Itens de Coleta
+  //pegar todos os li's
+  const itemsToCollect = document.querySelectorAll(".items-grid li")
+
+  for(const item of itemsToCollect) {
+    item.addEventListener("click", handleSelectedItem)
+  }
+
+  const collectedItems = document.querySelector("input[name=items]")
+
+  let selectedItems = []
+
+  function handleSelectedItem(event) {
+    const itemLi = event.target
+
+    //add or remove a class with javascript
+    itemLi.classList.toggle("selected")
+
+    const itemId = itemLi.dataset.id
+    
+    //check if there are selected items, if yes
+    //pick up selected items
+
+    const alreadySelected = selectedItems.findIndex(item => {
+      const itemFound = item == itemId //true or false
+      return itemFound
+    })
+
+    //if selected 
+    if(alreadySelected >= 0) {
+      //uncheck
+      const filteredItems = selectedItems.filter(item => {
+        const itemIsDifferent = item != itemId
+        return itemIsDifferent
+      })
+
+      selectedItems = filteredItems
+    } else {//if not selected
+      //add selection
+      selectedItems.push(itemId)
+    }
+    //updade the hidden field with selected items
+    collectedItems.value = selectedItems
+    
+  }
