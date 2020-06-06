@@ -13,15 +13,15 @@ nunjucks.configure("src/views", {
 //configure application paths
 //home page
 server.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html")
+  return res.render("index.html")
 })
 //create-point
 server.get("/create-point", (req, res) => {
-  res.sendFile(__dirname + "/views/create-point.html")
+  return res.render("create-point.html")
 })
 //search results
 server.get("/search-results", (req, res) => {
-  res.sendFile(__dirname + "/views/search-results.html")
+  return res.render("search-results.html")
 })
 
 //start server
