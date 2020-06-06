@@ -1,0 +1,23 @@
+{
+  "name": "NLW-01-Starter",
+  "version": "1.0.0",
+  "description": "Next Level Week 1.0 - NLW Projeto: Ecoleta by Rocketseat",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrericardoweb/NLW-01-Starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrericardoweb/NLW-01-Starter/issues"
+  },
+  "homepage": "https://github.com/andrericardoweb/NLW-01-Starter#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
