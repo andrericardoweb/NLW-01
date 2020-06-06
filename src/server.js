@@ -3,6 +3,13 @@ const server = express()
 //set up public folder
 server.use(express.static("public"))
 
+//template engine
+const nunjucks = require("nunjucks")
+nunjucks.configure("src/views", {
+  express: server,
+  noCache: true
+})
+
 //configure application paths
 //home page
 server.get("/", (req, res) => {
@@ -13,7 +20,6 @@ server.get("/create-point", (req, res) => {
   res.sendFile(__dirname + "/views/create-point.html")
 })
 //search results
-//create-point
 server.get("/search-results", (req, res) => {
   res.sendFile(__dirname + "/views/search-results.html")
 })
