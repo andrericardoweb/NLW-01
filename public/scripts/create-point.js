@@ -43,7 +43,7 @@ document
   .addEventListener("change", getCities)
 
   //Itens de Coleta
-  //pegar todos os li's
+  //get all li's
   const itemsToCollect = document.querySelectorAll(".items-grid li")
 
   for(const item of itemsToCollect) {
