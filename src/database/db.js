@@ -6,7 +6,7 @@ const db = new sqlite3.Database("./src/database/database.db")
 
 
 //use the database object for our operations
-db.serialize(() => {
+/*db.serialize(() => {
   //create a table
   db.run(`
     CREATE TABLE IF NOT EXISTS places (
@@ -35,13 +35,13 @@ db.serialize(() => {
   `
 
   const values = [
-    "https://images.unsplash.com/photo-1528323273322-d81458248d40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60",
-    "Colectoria",
-    "Av. Fernandes Lima, Farol",
-    "Nº 1500",
+    "https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60",
+    "Papersider",
+    "Via Expressa, Serraria",
+    "Nº 77",
     "Alagoas",
     "Maceió",
-    "Resíduos Eletrônicos, Lâmpadas"
+    "Papéis e Papelão"
   ]
 
   function afterInsertData(err) {
@@ -49,14 +49,26 @@ db.serialize(() => {
       return console.log(err)
     }
 
-    console.log("Cadastrado com sucesso")
+    console.log("Successful registration")
     console.log(this)
   }
-
-
   db.run(query, values, afterInsertData)
 
   //Query table data
+  db.all(`SELECT name FROM places`, function(err, rows) {
+    if(err) {
+      return console.log(err)
+    }
+
+    console.log("Your records:")
+    console.log(rows)
+  })
 
   //Delete data from the table
-})
+  db.run(`DELETE FROM places WHERE id = ?`, [1], function(err) {
+    if(err) {
+      return console.log(err)
+    }
+    console.log("Registration successfully deleted")
+  })
+})*/
