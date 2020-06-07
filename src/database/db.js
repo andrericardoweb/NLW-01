@@ -4,11 +4,12 @@ const sqlite3 = require("sqlite3").verbose()
 //create object that will perform operations on the database
 const db = new sqlite3.Database("./src/database/database.db")
 
-
+module.exports = db
 //use the database object for our operations
-/*db.serialize(() => {
+
+//db.serialize(() => {
   //create a table
-  db.run(`
+  /*db.run(`
     CREATE TABLE IF NOT EXISTS places (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       image TEXT,
@@ -19,10 +20,10 @@ const db = new sqlite3.Database("./src/database/database.db")
       city TEXT,
       items TEXT 
     );
-  `)
+  `)*/
 
   //insert data into the table
-  const query = `
+  /*const query = `
     INSERT INTO places (
       image,
       name,
@@ -52,20 +53,20 @@ const db = new sqlite3.Database("./src/database/database.db")
     console.log("Successful registration")
     console.log(this)
   }
-  db.run(query, values, afterInsertData)
+  db.run(query, values, afterInsertData) */
 
   //Query table data
-  db.all(`SELECT name FROM places`, function(err, rows) {
+  /*db.all(`SELECT name FROM places`, function(err, rows) {
     if(err) {
       return console.log(err)
     }
 
     console.log("Your records:")
     console.log(rows)
-  })
+  })*/
 
   //Delete data from the table
-  db.run(`DELETE FROM places WHERE id = ?`, [1], function(err) {
+  /*db.run(`DELETE FROM places WHERE id = ?`, [2], function(err) {
     if(err) {
       return console.log(err)
     }
